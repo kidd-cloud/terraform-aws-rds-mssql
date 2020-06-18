@@ -3,7 +3,7 @@ variable "environment" {}
 
 // The allocated storage in gigabytes.
 variable "rds_allocated_storage" {
-  default = "250"
+  default = "20"
 }
 
 // The instance type of the RDS instance.
@@ -24,7 +24,7 @@ variable "mssql_admin_password" {}
 
 // A list of VPC subnet identifiers.
 variable "vpc_subnet_ids" {
-  type = "list"
+  type = list(string)
 }
 
 // The VPC identifier where security groups are going to be applied.
@@ -32,19 +32,19 @@ variable "vpc_id" {}
 
 // List of CIDR blocks that will be granted to access to mssql instance.
 variable "vpc_cidr_blocks" {
-  type    = "list"
+  type    = list(string)
   default = []
 }
 
 // Additional list of CIDR blocks that will be granted to access to mssql instance.
 // These list is meant to be used in the vpn security group.
 variable "vpc_cidr_blocks_vpn" {
-  type    = "list"
+  type    = list(string)
   default = []
 }
 
 // Determines whether a final DB snapshot is created before the DB instance is deleted.
 variable "skip_final_snapshot" {
-  type    = "string"
+  type    = string
   default = "false"
 }
